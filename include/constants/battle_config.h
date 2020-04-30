@@ -60,7 +60,6 @@
 #define B_EXP_CATCH                 GEN_6 // In Gen6+, Pokémon get experience from catching.
 #define B_SPLIT_EXP                 GEN_5 // In Gen6+, Pokémon no longer split experience if multiple are used in the same battle.
 #define B_SCALED_EXP                GEN_6 // In Gen5 and Gen7+, exp scales by level of pokemon defeated.
-#define B_SPLIT_EXP                 GEN_5 // In Gen6+, exp per mon isn't reduced for using multiple mon.
 #define B_TRAINER_EXP_MULTIPLIER    GEN_6 // In Gen7+, trainer battles no longer give a 1.5 multiplier to exp gain.
 #define B_BURN_DAMAGE               GEN_6 // In Gen7+, burn damage is 1/16th of max HP instead of 1/8th.
 #define B_PARALYSIS_SPEED           GEN_6 // In Gen7+, speed is decreased by 50% instead of 75%.
