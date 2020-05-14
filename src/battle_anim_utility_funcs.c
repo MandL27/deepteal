@@ -1064,3 +1064,15 @@ static void AnimTask_WaitAndRestoreVisibility(u8 taskId)
         DestroyTask(taskId);
     }
 }
+
+void AnimTask_IsDoubleBattle(u8 taskId)
+{
+    gBattleAnimArgs[7] = (IsDoubleBattle() && !IsContest());
+    DestroyAnimVisualTask(taskId);
+}
+
+void AnimTask_CanBattlerSwitch(u8 taskId)
+{
+    gBattleAnimArgs[ARG_RET_ID] = CanBattlerSwitch(GetAnimBattlerId(gBattleAnimArgs[0]));
+    DestroyAnimVisualTask(taskId);
+}
