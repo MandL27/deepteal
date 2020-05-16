@@ -982,16 +982,16 @@ void GetBattlerHealthboxCoords(u8 battler, s16 *x, s16 *y)
         switch (GetBattlerPosition(battler))
         {
         case B_POSITION_PLAYER_LEFT:
-            x = 159, y = 73;
+            *x = 159, *y = 73;
             break;
         case B_POSITION_PLAYER_RIGHT:
-            x = 171, y = 98;
+            *x = 171, *y = 98;
             break;
         case B_POSITION_OPPONENT_LEFT:
             *x = 44, *y = 19;
             break;
         case B_POSITION_OPPONENT_RIGHT:
-            x = 32, y = 39;
+            *x = 32, *y = 39;
             break;
         }
     }
@@ -2019,7 +2019,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     void *ptr;
     const u8 *genderTxt;
-    u32 windowId, spriteTileNum, species;
+    u32 windowId, spriteTileOffset, species;
     u8 *windowTileData;
     u8 gender;
     struct Pokemon *illusionMon = GetIllusionMonPtr(gSprites[healthboxSpriteId].hMain_Battler);
