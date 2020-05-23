@@ -349,8 +349,9 @@ static const struct Subsprite sUnknown_0832C258[] =
 
 static const struct Subsprite sUnknown_0832C260[] =
 {
+    // :matchlikethis:
     {
-        .x = 240,
+        .x = -16,
         .y = 0,
         .shape = SPRITE_SHAPE(32x8),
         .size = SPRITE_SIZE(32x8),
@@ -366,8 +367,8 @@ static const struct Subsprite sUnknown_0832C260[] =
         .priority = 1
     },
     {
-        .x = 224,
-        .y = 0,
+        .x = 47,
+        .y = 5,
         .shape = SPRITE_SHAPE(8x8),
         .size = SPRITE_SIZE(8x8),
         .tileOffset = 8,
@@ -593,7 +594,7 @@ static const u16 sStatusIconColors[] =
     [PAL_STATUS_SLP] = RGB(20, 20, 17),
     [PAL_STATUS_FRZ] = RGB(17, 22, 28),
     [PAL_STATUS_BRN] = RGB(28, 14, 10),
-    [PAL_STATUS_TOX] = RGB(18,  8, 18)
+    [PAL_STATUS_TOX] = RGB(14,  7, 14)
 };
 
 static const struct WindowTemplate sHealthboxWindowTemplate = {0, 0, 0, 8, 3, 0, 0}; // width = 8, height = 3
@@ -1013,10 +1014,12 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     u32 xPos, var1;
     void *objVram;
     u8 battler = gSprites[healthboxSpriteId].hMain_Battler;
+    bool8 megaEvolved = FALSE;
 
     // Don't print Lv char if mon is mega evolved.
     if (gBattleStruct->mega.evolvedPartyIds[GetBattlerSide(battler)] & gBitTable[gBattlerPartyIndexes[battler]])
     {
+        megaEvolved = TRUE;
         xPos = (u32) ConvertIntToDecimalStringN(text, lvl, STR_CONV_MODE_LEFT_ALIGN, 3);
     }
     else
@@ -1036,7 +1039,7 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     xPos = 4 * var1;
     xPos += var1;
 
-    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, xPos+1, 2, 2, &windowId);
+    windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, xPos+1-(2*megaEvolved), 2, 2, &windowId);
     spriteTileOffset = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
 
     if (GetBattlerSide(battler) == B_SIDE_PLAYER)
@@ -1377,14 +1380,14 @@ void ChangeMegaTriggerSprite(u8 spriteId, u8 animId)
     StartSpriteAnim(&gSprites[spriteId], animId);
 }
 
-#define SINGLES_MEGA_TRIGGER_POS_X_OPTIMAL (30)
-#define SINGLES_MEGA_TRIGGER_POS_X_PRIORITY (31)
-#define SINGLES_MEGA_TRIGGER_POS_X_SLIDE (15)
-#define SINGLES_MEGA_TRIGGER_POS_Y_DIFF (-11)
+#define SINGLES_MEGA_TRIGGER_POS_X_OPTIMAL (35)
+#define SINGLES_MEGA_TRIGGER_POS_X_PRIORITY (36)
+#define SINGLES_MEGA_TRIGGER_POS_X_SLIDE (20)
+#define SINGLES_MEGA_TRIGGER_POS_Y_DIFF (-4)
 
-#define DOUBLES_MEGA_TRIGGER_POS_X_OPTIMAL (30)
-#define DOUBLES_MEGA_TRIGGER_POS_X_PRIORITY (31)
-#define DOUBLES_MEGA_TRIGGER_POS_X_SLIDE (15)
+#define DOUBLES_MEGA_TRIGGER_POS_X_OPTIMAL (35)
+#define DOUBLES_MEGA_TRIGGER_POS_X_PRIORITY (36)
+#define DOUBLES_MEGA_TRIGGER_POS_X_SLIDE (20)
 #define DOUBLES_MEGA_TRIGGER_POS_Y_DIFF (-4)
 
 #define tBattler    data[0]
@@ -1489,15 +1492,15 @@ void DestroyMegaTriggerSprite(void)
 
 static const s8 sIndicatorPosSingles[][2] =
 {
-    [B_POSITION_PLAYER_LEFT] = {53, -8},
-    [B_POSITION_OPPONENT_LEFT] = {45, -8},
+    [B_POSITION_PLAYER_LEFT] = {52, 0},
+    [B_POSITION_OPPONENT_LEFT] = {52, -8},
 };
 
 static const s8 sIndicatorPosDoubles[][2] =
 {
-    [B_POSITION_PLAYER_LEFT] = {53, -8},
-    [B_POSITION_OPPONENT_LEFT] = {45, -8},
-    [B_POSITION_PLAYER_RIGHT] = {53, -8},
+    [B_POSITION_PLAYER_LEFT] = {52, -8},
+    [B_POSITION_OPPONENT_LEFT] = {52, -8},
+    [B_POSITION_PLAYER_RIGHT] = {52, -8},
     [B_POSITION_OPPONENT_RIGHT] = {45, -8},
 };
 
@@ -2098,10 +2101,7 @@ static void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus)
 
     healthBarSpriteId = gSprites[healthboxSpriteId].hMain_HealthBarSpriteId;
 
-    if (noStatus)
-        CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_70), (void*)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
-    else
-        CpuFill32(0, (void*)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
+    CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_70), (void*)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
 }
 
 static void UpdateStatusIconInHealthbox(u8 healthboxSpriteId)
