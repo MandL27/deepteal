@@ -44,6 +44,18 @@ const u32 gBattleTerrainTilemap_Rayquaza[] = INCBIN_U32("graphics/battle_terrain
 
 const u32 gBattleTerrainPalette_Building[] = INCBIN_U32("graphics/battle_terrain/building/palette.gbapal.lz");
 
+const u32 gBattleTerrainTiles_Gym[] = INCBIN_U32("graphics/battle_terrain/gym/tiles.4bpp.lz");
+const u32 gBattleTerrainTilemap_Gym[] = INCBIN_U32("graphics/battle_terrain/gym/map.bin.lz");
+
+const u32 gBattleTerrainPalette_Rustboro[] = INCBIN_U32("graphics/battle_terrain/gym/palette06.gbapal.lz");
+const u32 gBattleTerrainPalette_Dewford[] = INCBIN_U32("graphics/battle_terrain/gym/palette02.gbapal.lz");
+const u32 gBattleTerrainPalette_Mauville[] = INCBIN_U32("graphics/battle_terrain/gym/palette13.gbapal.lz");
+const u32 gBattleTerrainPalette_Lavaridge[] = INCBIN_U32("graphics/battle_terrain/gym/palette10.gbapal.lz");
+const u32 gBattleTerrainPalette_Petalburg[] = INCBIN_U32("graphics/battle_terrain/gym/palette01.gbapal.lz");
+const u32 gBattleTerrainPalette_Fortree[] = INCBIN_U32("graphics/battle_terrain/gym/palette03.gbapal.lz");
+const u32 gBattleTerrainPalette_Mossdeep[] = INCBIN_U32("graphics/battle_terrain/gym/palette14.gbapal.lz");
+const u32 gBattleTerrainPalette_Sootopolis[] = INCBIN_U32("graphics/battle_terrain/gym/palette11.gbapal.lz");
+
 const u32 gBattleTerrainPalette_Kyogre[] = INCBIN_U32("graphics/battle_terrain/water/kyogre.gbapal.lz");
 const u32 gBattleTerrainPalette_Groudon[] = INCBIN_U32("graphics/battle_terrain/cave/groudon.gbapal.lz");
 const u32 gBattleTerrainPalette_BuildingGym[] = INCBIN_U32("graphics/battle_terrain/building/palette2.gbapal.lz");
