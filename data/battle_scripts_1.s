@@ -6490,7 +6490,7 @@ BattleScript_ItemSteal::
 BattleScript_DrizzleActivates::
 	pause 0x20
 	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNMADEITRAIN
+	printstring STRINGID_STARTEDTORAIN
 	waitstate
 	playanimation BS_BATTLER_0, B_ANIM_RAIN_CONTINUES, NULL
 	call BattleScript_WeatherFormChanges
@@ -6601,7 +6601,7 @@ BattleScript_HealerActivates::
 BattleScript_SandstreamActivates::
 	pause 0x20
 	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNSXWHIPPEDUPSANDSTORM
+	printstring STRINGID_SANDSTORMBREWED
 	waitstate
 	playanimation BS_BATTLER_0, B_ANIM_SANDSTORM_CONTINUES, NULL
 	call BattleScript_WeatherFormChanges
@@ -6689,7 +6689,7 @@ BattleScript_IntimidatePrevented:
 BattleScript_DroughtActivates::
 	pause 0x20
 	call BattleScript_AbilityPopUp
-	printstring STRINGID_PKMNSXINTENSIFIEDSUN
+	printstring STRINGID_SUNLIGHTGOTBRIGHT
 	waitstate
 	playanimation BS_BATTLER_0, B_ANIM_SUN_CONTINUES, NULL
 	call BattleScript_WeatherFormChanges
@@ -6698,7 +6698,7 @@ BattleScript_DroughtActivates::
 BattleScript_SnowWarningActivates::
 	pause 0x20
 	call BattleScript_AbilityPopUp
-	printstring STRINGID_SNOWWARNINGHAIL
+	printstring STRINGID_STARTEDHAIL
 	waitstate
 	playanimation BS_BATTLER_0, B_ANIM_HAIL_CONTINUES, NULL
 	call BattleScript_WeatherFormChanges
