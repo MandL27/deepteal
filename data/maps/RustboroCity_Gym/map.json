@@ -11,7 +11,7 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": false,
-  "battle_scene": "MAP_BATTLE_SCENE_RUSTBORO",
+  "battle_scene": "MAP_BATTLE_SCENE_GYM_ROCK",
   "connections": 0,
   "object_events": [
     {
