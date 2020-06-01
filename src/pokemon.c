@@ -2490,8 +2490,16 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
               | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
               | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
-        
-        if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+        if (otIdType == OT_ID_PLAYER_ID_NO_SHINY) //Pokemon cannot be shiny
+        {
+            u32 shinyValue;
+            do
+            {
+                value = Random32();
+                shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
+            } while (shinyValue < SHINY_ODDS);
+        }
+        else if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
         {
             u32 shinyValue;
             u32 rolls = 0;
@@ -2556,6 +2564,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
     }
 
+    // TODO: gen hidden abilities
     if (gBaseStats[species].abilities[1])
     {
         value = personality & 1;
