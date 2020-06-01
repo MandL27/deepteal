@@ -1,7 +1,7 @@
 //#define TMHM_LEARNSET(moves) {(u32)(moves), ((u64)(moves) >> 32)}
 //#define TMHM(tmhm) ((u64)1 << (ITEM_##tmhm - ITEM_TM01_FOCUS_PUNCH))
 
-#define TMHM(tmhm) ((u8) ((ITEM_##tmhm) - ITEM_TM01_FOCUS_PUNCH))
+#define TMHM(tmhm) ((u8) ((ITEM_##tmhm) - ITEM_TM01))
 
 // Note: These TM/HM Learnsets have not been verified. This is just a quick port of SBird1337/Karathan's TM/HM System, after all.
 

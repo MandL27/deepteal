@@ -1964,9 +1964,9 @@ static u8 CanMonLearnTMTutor(struct Pokemon *mon, u16 item, u8 tutor)
     if (GetMonData(mon, MON_DATA_IS_EGG))
         return CANNOT_LEARN_MOVE_IS_EGG;
 
-    if (item >= ITEM_TM01_FOCUS_PUNCH)
+    if (item >= ITEM_TM01)
     {
-        if (CanMonLearnTMHM(mon, item - ITEM_TM01_FOCUS_PUNCH))
+        if (CanMonLearnTMHM(mon, item - ITEM_TM01))
             move = ItemIdToBattleMoveId(item);
         else
             return CANNOT_LEARN_MOVE;
@@ -1994,10 +1994,18 @@ static u16 GetTutorMove(u8 tutor)
 
 static bool8 CanLearnTutorMove(u16 species, u8 tutor)
 {
-    if (sTutorLearnsets[species] & (1 << tutor))
-        return TRUE;
-    else
+    const u8 *learnableMoves;
+    if (species == SPECIES_EGG)
         return FALSE;
+    
+    learnableMoves = sTutorLearnsets[species];
+    while (*learnableMoves != 0xFF)
+    {
+        if (*learnableMoves == tutor)
+            return TRUE;
+        learnableMoves++;
+    }
+    return FALSE;
 }
 
 static void InitPartyMenuWindows(u8 layout)
@@ -4802,8 +4810,6 @@ static void Task_LearnedMove(u8 taskId)
     if (move[1] == 0)
     {
         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
-        if (item < ITEM_HM01_CUT)
-            RemoveBagItem(item, 1);
     }
     GetMonNickname(mon, gStringVar1);
     StringCopy(gStringVar2, gMoveNames[move[0]]);
