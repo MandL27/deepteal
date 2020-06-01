@@ -38,6 +38,8 @@ const u16 gTutorMoves[] =
 //#define TUTOR(move) ((u64)1 << (TUTOR_##move))
 #define TUTOR(move) ((u8) (TUTOR_##move))
 
+// DISCLAIMER: These are untested. Tutor bugs CAN and WILL be caught during development, and this system may change accordingly.
+
 static const u8 sNoneTutorLearnset[] =
 {
     TUTOR(MOVE_DOUBLE_EDGE),
