@@ -1192,7 +1192,7 @@ static const u8 *const sUnused_StatStrings[] =
     gText_Speed2
 };
 
-static const u16 sTMHMMoves[] =
+const u16 sTMHMMoves[TMHM_COUNT] =
 {
     MOVE_FOCUS_PUNCH,
     MOVE_DRAGON_CLAW,
