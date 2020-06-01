@@ -18983,7 +18983,7 @@ static const u8 sPyroarTMHMLearnset[] =
     0xFF,
 };
 
-static const u8 sFlabébéTMHMLearnset[] =
+static const u8 sFlabebeTMHMLearnset[] =
 {
     TMHM(TM45_ATTRACT),
     TMHM(TM04_CALM_MIND),
@@ -23590,7 +23590,7 @@ const u8 *const gTMHMLearnsets[] =
     [SPECIES_VIVILLON] = sVivillonTMHMLearnset,
     [SPECIES_LITLEO] = sLitleoTMHMLearnset,
     [SPECIES_PYROAR] = sPyroarTMHMLearnset,
-    [SPECIES_FLABEBE] = sFlabébéTMHMLearnset,
+    [SPECIES_FLABEBE] = sFlabebeTMHMLearnset,
     [SPECIES_FLOETTE] = sFloetteTMHMLearnset,
     [SPECIES_FLORGES] = sFlorgesTMHMLearnset,
     [SPECIES_SKIDDO] = sSkiddoTMHMLearnset,

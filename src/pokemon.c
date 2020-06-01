@@ -2495,7 +2495,6 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
             u32 shinyValue;
             do
             {
-                value = Random32();
                 shinyValue = HIHALF(value) ^ LOHALF(value) ^ HIHALF(personality) ^ LOHALF(personality);
             } while (shinyValue < SHINY_ODDS);
         }
@@ -6230,7 +6229,9 @@ u32 CanMonLearnTMHM(struct Pokemon *mon, u8 tm)
     u16 species = GetMonData(mon, MON_DATA_SPECIES2, 0);
     const u8 *learnableMoves;
     if (species == SPECIES_EGG)
-        return FALSE;
+    {
+        return 0;
+    }
 
     learnableMoves = gTMHMLearnsets[species];
     while (*learnableMoves != 0xFF)

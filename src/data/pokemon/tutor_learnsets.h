@@ -11129,7 +11129,7 @@ static const u8 sPyroarTutorLearnset[] =
     0xFF,
 };
 
-static const u8 sFlabébéTutorLearnset[] =
+static const u8 sFlabebeTutorLearnset[] =
 {
     TUTOR(MOVE_SLEEP_TALK),
     TUTOR(MOVE_SNORE),
@@ -13482,7 +13482,7 @@ static const u8 *const sTutorLearnsets[] =
     [SPECIES_VIVILLON] = sVivillonTutorLearnset,
     [SPECIES_LITLEO] = sLitleoTutorLearnset,
     [SPECIES_PYROAR] = sPyroarTutorLearnset,
-    [SPECIES_FLABEBE] = sFlabébéTutorLearnset,
+    [SPECIES_FLABEBE] = sFlabebeTutorLearnset,
     [SPECIES_FLOETTE] = sFloetteTutorLearnset,
     [SPECIES_FLORGES] = sFlorgesTutorLearnset,
     [SPECIES_SKIDDO] = sSkiddoTutorLearnset,
