@@ -812,7 +812,7 @@ void DrawMainBattleBackground(void)
         case MAP_BATTLE_SCENE_NORMAL:
             LZDecompressVram(gBattleTerrainTable[gBattleTerrain].tileset, (void*)(BG_CHAR_ADDR(2)));
             LZDecompressVram(gBattleTerrainTable[gBattleTerrain].tilemap, (void*)(BG_SCREEN_ADDR(26)));
-            LoadCompressedPalette(gBattleTerrainTable[gBattleTerrain].palette, 0x20, 0x60);
+            LoadPalette(gBattleTerrainTable[gBattleTerrain].palette, 0x20, 0x60);
             break;
         case MAP_BATTLE_SCENE_GYM:
             LZDecompressVram(gBattleTerrainTiles_Gym, (void*)(BG_CHAR_ADDR(2)));

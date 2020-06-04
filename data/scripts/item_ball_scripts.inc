@@ -107,7 +107,7 @@ Route115_EventScript_ItemSuperPotion:: @ 8290E2A
 	end
 
 Route115_EventScript_ItemTM01:: @ 8290E37
-	finditem ITEM_TM01
+	finditem ITEM_TM40
 	end
 
 Route115_EventScript_ItemIron:: @ 8290E44
@@ -507,7 +507,7 @@ MtPyre_Exterior_EventScript_ItemMaxPotion:: @ 829133E
 	end
 
 MtPyre_Exterior_EventScript_ItemTM48:: @ 829134B
-	finditem ITEM_TM48
+	finditem ITEM_TM77
 	end
 
 AquaHideout_B1F_EventScript_ItemMasterBall:: @ 8291358

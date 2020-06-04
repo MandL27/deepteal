@@ -84,7 +84,7 @@ void DeserializeTmHmItemSlots(void)
     {
         u8 bit = i % 8;
         if (gSaveBlock1Ptr->bagPocket_TMHMOwnedFlags[i / 8] & (1<<bit))
-            AddBagItem(i + ITEM_TM01, 1);
+            AddBagItem(i + ITEM_TM00_BODY_SLAM, 1);
     }
 }
 
@@ -428,8 +428,8 @@ _080D6916:\n\
 
 static void SetTmHmOwned(u16 itemId)
 {
-    u8* flagByte = &gSaveBlock1Ptr->bagPocket_TMHMOwnedFlags[(itemId - ITEM_TM01) / 8];
-    *flagByte = (*flagByte) | (1 << ((itemId - ITEM_TM01) % 8));
+    u8* flagByte = &gSaveBlock1Ptr->bagPocket_TMHMOwnedFlags[(itemId - ITEM_TM00_BODY_SLAM) / 8];
+    *flagByte = (*flagByte) | (1 << ((itemId - ITEM_TM00_BODY_SLAM) % 8));
 }
 
 bool8 AddBagItem(u16 itemId, u16 count)

@@ -20,7 +20,7 @@ struct PartyMenu
     s16 learnMoveState;  // data2, used only as a learn move state
 };
 
-#define TMHM_COUNT 58
+#define TMHM_COUNT 107
 extern const u16 gTMHMMoves[TMHM_COUNT];
 
 extern struct PartyMenu gPartyMenu;

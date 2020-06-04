@@ -1510,6 +1510,11 @@ static const u8 sDevonScopeDesc[] = _(
     "unseeable Pokémon.");
 
 // TMs/HMs
+static const u8 sTM00Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
 static const u8 sTM01Desc[] = _(
     "Powerful, but makes\n"
     "the user flinch if\n"
@@ -1759,6 +1764,251 @@ static const u8 sTM50Desc[] = _(
     "Enables full-power\n"
     "attack, but sharply\n"
     "lowers Sp. Atk.");
+
+static const u8 sTM51Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM52Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM53Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM54Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM55Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM56Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM57Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM58Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM59Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM60Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM61Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM62Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM63Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM64Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM65Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM66Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM67Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM68Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM69Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM70Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM71Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM72Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM73Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM74Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM75Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM76Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM77Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM78Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM79Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM80Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM81Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM82Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM83Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM84Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM85Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM86Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM87Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM88Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM89Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM90Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM91Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM92Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM93Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM94Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM95Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM96Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM97Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM98Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
+
+static const u8 sTM99Desc[] = _(
+    "Placeholder item\n"
+    "description for a\n"
+    "Technical Machine.");
 
 
 static const u8 sHM01Desc[] = _(
