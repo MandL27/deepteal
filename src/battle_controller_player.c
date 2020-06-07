@@ -632,6 +632,7 @@ static void HandleInputChooseMove(void)
     }
     else if (gMain.newKeys & SELECT_BUTTON)
     {
+        // TODO: hide type icon
         if (gNumberOfMovesToChoose > 1 && !(gBattleTypeFlags & BATTLE_TYPE_LINK))
         {
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 29);
@@ -1542,7 +1543,7 @@ static void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 arg1)
     src[0] = arg1 + 1;
     src[1] = arg1 + 2;
 
-    CopyToBgTilemapBufferRect_ChangePalette(0, src, 9 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
+    CopyToBgTilemapBufferRect_ChangePalette(0, src, 11 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
 
@@ -1552,7 +1553,7 @@ static void MoveSelectionDestroyCursorAt(u8 cursorPosition)
     src[0] = 0x1016;
     src[1] = 0x1016;
 
-    CopyToBgTilemapBufferRect_ChangePalette(0, src, 9 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
+    CopyToBgTilemapBufferRect_ChangePalette(0, src, 11 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
 
