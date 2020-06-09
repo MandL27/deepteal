@@ -956,6 +956,12 @@ void LoadBattleTextboxAndBackground(void)
     LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
     LoadBattleMenuWindowGfx();
     DrawMainBattleBackground();
+    LoadTypeIcon();
+}
+
+void LoadTypeIcon(void)
+{
+    LoadCompressedPalette(gMoveTypes_Pal, 0x1D0, 0x60);
 }
 
 static void DrawLinkBattleParticipantPokeballs(u8 taskId, u8 multiplayerId, u8 bgId, u8 destX, u8 destY)
