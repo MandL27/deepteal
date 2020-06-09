@@ -649,19 +649,19 @@ static const struct WindowTemplate sPageMovesTemplate[] = // This is used for bo
         .bg = 0,
         .tilemapLeft = 15,
         .tilemapTop = 4,
-        .width = 9,
+        .width = 10,
         .height = 10,
         .paletteNum = 6,
         .baseBlock = 449,
     },
     [PSS_DATA_WINDOW_MOVE_PP] = {
         .bg = 0,
-        .tilemapLeft = 24,
+        .tilemapLeft = 25,
         .tilemapTop = 4,
-        .width = 6,
+        .width = 5,
         .height = 10,
         .paletteNum = 8,
-        .baseBlock = 539,
+        .baseBlock = 549,
     },
     [PSS_DATA_WINDOW_MOVE_DESCRIPTION] = {
         .bg = 0,
@@ -2780,6 +2780,11 @@ static void PrintTextOnWindow(u8 windowId, const u8 *string, u8 x, u8 y, u8 line
     AddTextPrinterParameterized4(windowId, 1, x, y, 0, lineSpacing, sTextColors[colorId], 0, string);
 }
 
+static void PrintNarrowTextOnWindow(u8 windowId, const u8 *string, u8 x, u8 y, u8 lineSpacing, u8 colorId)
+{
+    AddTextPrinterParameterized4(windowId, 7, x, y, 0, lineSpacing, sTextColors[colorId], 0, string);
+}
+
 static void PrintMonInfo(void)
 {
     FillWindowPixelBuffer(PSS_LABEL_WINDOW_PORTRAIT_DEX_NUMBER, PIXEL_FILL(0));
@@ -3580,7 +3585,7 @@ static void PrintMoveNameAndPP(u8 moveIndex)
     if (move != 0)
     {
         pp = CalculatePPWithBonus(move, summary->ppBonuses, moveIndex);
-        PrintTextOnWindow(moveNameWindowId, gMoveNames[move], 0, moveIndex * 16 + 1, 0, 1);
+        PrintNarrowTextOnWindow(moveNameWindowId, gMoveNames[move], 0, moveIndex * 16 + 1, 0, 1);
         ConvertIntToDecimalStringN(gStringVar1, summary->pp[moveIndex], STR_CONV_MODE_RIGHT_ALIGN, 2);
         ConvertIntToDecimalStringN(gStringVar2, pp, STR_CONV_MODE_RIGHT_ALIGN, 2);
         DynamicPlaceholderTextUtil_Reset();
@@ -3589,17 +3594,17 @@ static void PrintMoveNameAndPP(u8 moveIndex)
         DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sMovesPPLayout);
         text = gStringVar4;
         ppState = GetCurrentPpToMaxPpState(summary->pp[moveIndex], pp) + 9;
-        x = GetStringRightAlignXOffset(1, text, 44);
+        x = GetStringRightAlignXOffset(7, text, 40);
     }
     else
     {
-        PrintTextOnWindow(moveNameWindowId, gText_OneDash, 0, moveIndex * 16 + 1, 0, 1);
+        PrintNarrowTextOnWindow(moveNameWindowId, gText_OneDash, 0, moveIndex * 16 + 1, 0, 1);
         text = gText_TwoDashes;
         ppState = 12;
-        x = GetStringCenterAlignXOffset(1, text, 44);
+        x = GetStringCenterAlignXOffset(7, text, 40);
     }
 
-    PrintTextOnWindow(ppValueWindowId, text, x, moveIndex * 16 + 1, 0, ppState);
+    PrintNarrowTextOnWindow(ppValueWindowId, text, x - 2, moveIndex * 16 + 1, 0, ppState);
 }
 
 static void PrintMovePowerAndAccuracy(u16 moveIndex)
@@ -3734,7 +3739,7 @@ static void PrintNewMoveDetailsOrCancelText(void)
 
     if (sMonSummaryScreen->newMove == MOVE_NONE)
     {
-        PrintTextOnWindow(windowId1, gText_Cancel, 0, 65, 0, 1);
+        PrintNarrowTextOnWindow(windowId1, gText_Cancel, 0, 65, 0, 1);
     }
     else
     {
@@ -3807,7 +3812,7 @@ static void SetSpriteInvisibility(u8 spriteArrayId, bool8 invisible)
 
 static void HidePageSpecificSprites(void)
 {
-    // Keeps Pokémon, caught ball and status sprites visible.
+    // Keeps Pokï¿½mon, caught ball and status sprites visible.
     u8 i;
 
     for (i = SPRITE_ARR_ID_TYPE; i < ARRAY_COUNT(sMonSummaryScreen->spriteIds); i++)
