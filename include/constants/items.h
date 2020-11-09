@@ -14,22 +14,10 @@
 #define ITEM_REPEAT_BALL 9
 #define ITEM_TIMER_BALL 10
 #define ITEM_LUXURY_BALL 11
-#define ITEM_DUSK_BALL 12
-#define ITEM_HEAL_BALL 13
-#define ITEM_QUICK_BALL 14
-#define ITEM_CHERISH_BALL 15
-#define ITEM_FAST_BALL 16
-#define ITEM_LEVEL_BALL 17
-#define ITEM_LURE_BALL 18
-#define ITEM_HEAVY_BALL 19
-#define ITEM_LOVE_BALL 20
-#define ITEM_FRIEND_BALL 21
-#define ITEM_MOON_BALL 22
-#define ITEM_SPORT_BALL 23
-#define ITEM_PARK_BALL 24
-#define ITEM_DREAM_BALL 25
-#define ITEM_BEAST_BALL 26
-#define ITEM_PREMIER_BALL 27
+#define ITEM_PREMIER_BALL 12
+
+#define LAST_BALL ITEM_PREMIER_BALL
+
 // Pokemon Items
 #define ITEM_POTION 28
 #define ITEM_ANTIDOTE 29
@@ -783,6 +771,15 @@
 #define MAX_BAG_ITEM_CAPACITY  99
 #define MAX_PC_ITEM_CAPACITY   999
 #define MAX_BERRY_CAPACITY     999
+
+#define BAG_ITEM_CAPACITY_DIGITS 2
+#define BERRY_CAPACITY_DIGITS 3
+#define MAX_ITEM_DIGITS BERRY_CAPACITY_DIGITS
+
+// Secondary IDs for rods
+#define OLD_ROD   0
+#define GOOD_ROD  1
+#define SUPER_ROD 2
 
 // Check if the item is one that can be used on a Pokemon.
 #define ITEM_HAS_EFFECT(item) ((item) >= ITEM_POTION && (item) <= LAST_BERRY_INDEX)
