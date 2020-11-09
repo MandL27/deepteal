@@ -1,8 +1,6 @@
 #ifndef GUARD_CONSTANTS_BATTLE_CONFIG_H
 #define GUARD_CONSTANTS_BATTLE_CONFIG_H
 
-#define BATTLE_ENGINE
-
 // Species with peculiar battle effects.
 #ifndef POKEMON_EXPANSION
     #define SPECIES_DIALGA            0
@@ -23,8 +21,8 @@
     #define SPECIES_WISHIWASHI        0
     #define SPECIES_WISHIWASHI_SCHOOL 10004
     #define SPECIES_ZYGARDE           0     // 50%
-    #define SPECIES_ZYGARDE_10        10005 // 10 %
-    #define SPECIES_ZYGARDE_COMPLETE  10006 // 100 %
+    #define SPECIES_ZYGARDE_10        10005 // 10%
+    #define SPECIES_ZYGARDE_COMPLETE  10006 // 100%
 #endif
 
 // Items with peculiar battle effects.

@@ -1755,7 +1755,6 @@ static void MoveSelectionDisplayMoveType(void)
 {
     struct Sprite *spr;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
-<<<<<<< HEAD
     if (sBattleMoveTypeSpriteId == 0)
     {
         LoadCompressedSpriteSheet(&sSpriteSheet_MoveTypes);
@@ -1767,16 +1766,6 @@ static void MoveSelectionDisplayMoveType(void)
     spr->pos1.x = 216;
     spr->pos1.y = 128;
     spr->invisible = FALSE;
-=======
-
-    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
-    *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
-    *(txtPtr)++ = EXT_CTRL_CODE_SIZE;
-    *(txtPtr)++ = 1;
-
-    StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type]);
-    BattlePutTextOnWindow(gDisplayedStringBattle, 10);
->>>>>>> 8e30647ca17b0247c0f4c599834211fb0fde9d57
 }
 
 static void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 arg1)
