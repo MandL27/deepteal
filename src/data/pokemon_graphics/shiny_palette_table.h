@@ -908,6 +908,11 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[] =
     SPECIES_SHINY_PAL(MIMIKYU_BUSTED, gMonShinyPalette_MimikyuBusted),
     SPECIES_SHINY_PAL(LYCANROC_MIDNIGHT, gMonShinyPalette_LycanrocMidnight),
     SPECIES_SHINY_PAL(LYCANROC_DUSK, gMonShinyPalette_LycanrocDusk),
+    SPECIES_SHINY_PAL(ZYGARDE_10, gMonShinyPalette_Zygarde10),
+    SPECIES_SHINY_PAL(ZYGARDE_COMPLETE, gMonShinyPalette_ZygardeComplete),
+    SPECIES_SHINY_PAL(DEOXYS_ATTACK, gMonShinyPalette_DeoxysAttack),
+    SPECIES_SHINY_PAL(DEOXYS_DEFENSE, gMonShinyPalette_DeoxysDefense),
+    SPECIES_SHINY_PAL(DEOXYS_SPEED, gMonShinyPalette_DeoxysSpeed),
 
     SPECIES_SHINY_PAL(UNOWN_A, gMonShinyPalette_Unown),
     SPECIES_SHINY_PAL(UNOWN_B, gMonShinyPalette_Unown),
