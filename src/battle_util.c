@@ -3249,14 +3249,14 @@ bool8 HasNoMonsToSwitch(u8 battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2)
             party = gEnemyParty;
 
         id1 = ((battler & BIT_FLANK) / 2);
-        for (i = id1 * 3; i < id1 * 3 + 3; i++)
+        for (i = id1 * 6; i < id1 * 6 + 6; i++)
         {
             if (GetMonData(&party[i], MON_DATA_HP) != 0
              && GetMonData(&party[i], MON_DATA_SPECIES2) != SPECIES_NONE
              && GetMonData(&party[i], MON_DATA_SPECIES2) != SPECIES_EGG)
                 break;
         }
-        return (i == id1 * 3 + 3);
+        return (i == id1 * 6 + 6);
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
     {
@@ -3289,14 +3289,14 @@ bool8 HasNoMonsToSwitch(u8 battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2)
             id1 = GetLinkTrainerFlankId(id2);
         }
 
-        for (i = id1 * 3; i < id1 * 3 + 3; i++)
+        for (i = id1 * 6; i < id1 * 6 + 6; i++)
         {
             if (GetMonData(&party[i], MON_DATA_HP) != 0
              && GetMonData(&party[i], MON_DATA_SPECIES2) != SPECIES_NONE
              && GetMonData(&party[i], MON_DATA_SPECIES2) != SPECIES_EGG)
                 break;
         }
-        return (i == id1 * 3 + 3);
+        return (i == id1 * 6 + 6);
     }
     else if ((gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) && GetBattlerSide(battler) == B_SIDE_OPPONENT)
     {
@@ -3305,16 +3305,16 @@ bool8 HasNoMonsToSwitch(u8 battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2)
         if (battler == 1)
             id1 = 0;
         else
-            id1 = 3;
+            id1 = 6;
 
-        for (i = id1; i < id1 + 3; i++)
+        for (i = id1; i < id1 + 6; i++)
         {
             if (GetMonData(&party[i], MON_DATA_HP) != 0
              && GetMonData(&party[i], MON_DATA_SPECIES2) != SPECIES_NONE
              && GetMonData(&party[i], MON_DATA_SPECIES2) != SPECIES_EGG)
                 break;
         }
-        return (i == id1 + 3);
+        return (i == id1 + 6);
     }
     else
     {

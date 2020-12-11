@@ -5263,9 +5263,9 @@ bool32 CanBattlerSwitch(u32 battlerId)
 
         i = 0;
         if (battlerId & 2)
-            i = 3;
+            i = 6;
 
-        for (lastMonId = i + 3; i < lastMonId; i++)
+        for (lastMonId = i + 6; i < lastMonId; i++)
         {
             if (GetMonData(&party[i], MON_DATA_SPECIES) != SPECIES_NONE
              && !GetMonData(&party[i], MON_DATA_IS_EGG)
@@ -5286,7 +5286,7 @@ bool32 CanBattlerSwitch(u32 battlerId)
 
                 i = 0;
                 if (GetLinkTrainerFlankId(GetBattlerMultiplayerId(battlerId)) == TRUE)
-                    i = 3;
+                    i = 6;
             }
             else
             {
@@ -5295,7 +5295,7 @@ bool32 CanBattlerSwitch(u32 battlerId)
                 if (battlerId == 1)
                     i = 0;
                 else
-                    i = 3;
+                    i = 6;
             }
         }
         else
@@ -5307,10 +5307,10 @@ bool32 CanBattlerSwitch(u32 battlerId)
 
             i = 0;
             if (GetLinkTrainerFlankId(GetBattlerMultiplayerId(battlerId)) == TRUE)
-                i = 3;
+                i = 6;
         }
 
-        for (lastMonId = i + 3; i < lastMonId; i++)
+        for (lastMonId = i + 6; i < lastMonId; i++)
         {
             if (GetMonData(&party[i], MON_DATA_SPECIES) != SPECIES_NONE
              && !GetMonData(&party[i], MON_DATA_IS_EGG)
@@ -5327,9 +5327,9 @@ bool32 CanBattlerSwitch(u32 battlerId)
 
         i = 0;
         if (battlerId == B_POSITION_OPPONENT_RIGHT)
-            i = 3;
+            i = 6;
 
-        for (lastMonId = i + 3; i < lastMonId; i++)
+        for (lastMonId = i + 6; i < lastMonId; i++)
         {
             if (GetMonData(&party[i], MON_DATA_SPECIES) != SPECIES_NONE
              && !GetMonData(&party[i], MON_DATA_IS_EGG)

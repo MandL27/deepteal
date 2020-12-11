@@ -555,7 +555,7 @@ static void CB2_InitBattleInternal(void)
     {
         CreateNPCTrainerParty(&gEnemyParty[0], gTrainerBattleOpponent_A, TRUE);
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && !BATTLE_TWO_VS_ONE_OPPONENT)
-            CreateNPCTrainerParty(&gEnemyParty[3], gTrainerBattleOpponent_B, FALSE);
+            CreateNPCTrainerParty(&gEnemyParty[6], gTrainerBattleOpponent_B, FALSE);
         SetWildMonHeldItem();
     }
 
@@ -1802,17 +1802,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
         if (firstTrainer == TRUE)
             ZeroEnemyPartyMons();
 
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-        {
-            if (gTrainers[trainerNum].partySize > 3)
-                monsCount = 3;
-            else
-                monsCount = gTrainers[trainerNum].partySize;
-        }
-        else
-        {
-            monsCount = gTrainers[trainerNum].partySize;
-        }
+        monsCount = gTrainers[trainerNum].partySize; // vestigial code from when multis had to truncate
 
         for (i = 0; i < monsCount; i++)
         {
@@ -3276,6 +3266,28 @@ static void DoBattleIntro(void)
             gActiveBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
             MarkBattlerForControllerExec(gActiveBattler);
+
+            if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
+            {
+                for (i = 0; i < PARTY_SIZE; i++)
+                {
+                    if (GetMonData(&gEnemyParty[i + 6], MON_DATA_SPECIES2) == SPECIES_NONE
+                     || GetMonData(&gEnemyParty[i + 6], MON_DATA_SPECIES2) == SPECIES_EGG)
+                    {
+                        hpStatus[i].hp = 0xFFFF;
+                        hpStatus[i].status = 0;
+                    }
+                    else
+                    {
+                        hpStatus[i].hp = GetMonData(&gEnemyParty[i + 6], MON_DATA_HP);
+                        hpStatus[i].status = GetMonData(&gEnemyParty[i + 6], MON_DATA_STATUS);
+                    }
+                }
+
+                gActiveBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
+                BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
+                MarkBattlerForControllerExec(gActiveBattler);
+            }
 
             for (i = 0; i < PARTY_SIZE; i++)
             {

@@ -68,8 +68,8 @@ static bool8 ShouldSkipFriendshipChange(void);
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
 EWRAM_DATA u8 gPlayerPartyCount = 0;
 EWRAM_DATA u8 gEnemyPartyCount = 0;
-EWRAM_DATA struct Pokemon gPlayerParty[PARTY_SIZE] = {0};
-EWRAM_DATA struct Pokemon gEnemyParty[PARTY_SIZE] = {0};
+EWRAM_DATA struct Pokemon gPlayerParty[PARTY_SIZE * 2] = {0};
+EWRAM_DATA struct Pokemon gEnemyParty[PARTY_SIZE * 2] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 EWRAM_DATA struct Unknown_806F160_Struct *gUnknown_020249B4[2] = {NULL};
 
@@ -2433,14 +2433,14 @@ void ZeroMonData(struct Pokemon *mon)
 void ZeroPlayerPartyMons(void)
 {
     s32 i;
-    for (i = 0; i < PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE * 2; i++)
         ZeroMonData(&gPlayerParty[i]);
 }
 
 void ZeroEnemyPartyMons(void)
 {
     s32 i;
-    for (i = 0; i < PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE * 2; i++)
         ZeroMonData(&gEnemyParty[i]);
 }
 

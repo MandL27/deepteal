@@ -156,13 +156,13 @@ static void InitSinglePlayerBtlControllers(void)
         gBattlerPartyIndexes[1] = 0;
         if (BATTLE_TWO_VS_ONE_OPPONENT)
         {
-            gBattlerPartyIndexes[2] = 3;
+            gBattlerPartyIndexes[2] = 6;
             gBattlerPartyIndexes[3] = 1;
         }
         else
         {
-            gBattlerPartyIndexes[2] = 3;
-            gBattlerPartyIndexes[3] = 3;
+            gBattlerPartyIndexes[2] = 6;
+            gBattlerPartyIndexes[3] = 6;
         }
     }
     else if (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE))
@@ -265,8 +265,8 @@ static void InitSinglePlayerBtlControllers(void)
 
                 gBattlerPartyIndexes[0] = 0;
                 gBattlerPartyIndexes[1] = 0;
-                gBattlerPartyIndexes[2] = 3;
-                gBattlerPartyIndexes[3] = 3;
+                gBattlerPartyIndexes[2] = 6;
+                gBattlerPartyIndexes[3] = 6;
             }
             else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
             {
@@ -504,8 +504,8 @@ static void InitLinkBtlControllers(void)
         BufferBattlePartyCurrentOrderBySide(3, 1);
         gBattlerPartyIndexes[0] = 0;
         gBattlerPartyIndexes[1] = 0;
-        gBattlerPartyIndexes[2] = 3;
-        gBattlerPartyIndexes[3] = 3;
+        gBattlerPartyIndexes[2] = 6;
+        gBattlerPartyIndexes[3] = 6;
     }
     else
     {
@@ -655,7 +655,7 @@ static void SetBattlePartyIds(void)
         }
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-            gBattlerPartyIndexes[1] = 0, gBattlerPartyIndexes[3] = 3;
+            gBattlerPartyIndexes[1] = 0, gBattlerPartyIndexes[3] = 6;
     }
 }
 
