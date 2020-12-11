@@ -35,7 +35,7 @@ EventScript_BufferItemsPocket:: @ 8271B45
 EventScript_BufferKeyItemsPocket:: @ 8271B55
 	bufferstdstring 2, STDSTRING_KEYITEMS
 	compare VAR_0x8007, 1
-	call_if_eq EventScript_PlayFanfareObtainedItem
+	call_if_eq EventScript_PlayFanfareObtainedKeyItem
 	return
 
 EventScript_BufferPokeballsPocket:: @ 8271B65
@@ -53,7 +53,7 @@ EventScript_BufferTMHMsPocket:: @ 8271B75
 EventScript_BufferBerriesPocket:: @ 8271B85
 	bufferstdstring 2, STDSTRING_BERRIES
 	compare VAR_0x8007, 1
-	call_if_eq EventScript_PlayFanfareObtainedItem
+	call_if_eq EventScript_PlayFanfareObtainedBerry
 	return
 
 EventScript_BufferMedicinePocket::
@@ -88,6 +88,15 @@ EventScript_NoRoomForItem:: @ 8271BA9
 EventScript_PlayFanfareObtainedItem:: @ 8271BAF
 	playfanfare MUS_OBTAIN_ITEM
 	return
+
+EventScript_PlayFanfareObtainedKeyItem::
+	playfanfare MUS_RG_OBTAIN_KEY_ITEM
+	return
+
+EventScript_PlayFanfareObtainedBerry::
+	playfanfare MUS_OBTAIN_BERRY
+	return
+
 
 EventScript_PlayFanfareObtainedTMHM:: @ 8271BB3
 	playfanfare MUS_OBTAIN_TMHM

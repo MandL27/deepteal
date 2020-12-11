@@ -120,7 +120,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent:: @ 81F9DDB
 	bufferleadmonspeciesname 0
 	message LittlerootTown_ProfessorBirchsLab_Text_LikeYouToHavePokemon
 	waitmessage
-	playfanfare MUS_OBTAIN_ITEM
+	playfanfare MUS_EVOLVED
 	waitfanfare
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_WhyNotGiveNicknameToMon, MSGBOX_YESNO
 	compare VAR_RESULT, YES
@@ -208,7 +208,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex:: @ 81F9E80
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
 	waitmovement 0
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone, MSGBOX_DEFAULT
-	playfanfare MUS_OBTAIN_ITEM
+	playfanfare MUS_RG_OBTAIN_KEY_ITEM
 	message LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational
 	waitmessage
 	waitfanfare
@@ -492,7 +492,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedChikorita:: @ 81FA23F
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ReceivedJohtoStarter:: @ 81FA24F
-	playfanfare MUS_OBTAIN_ITEM
+	playfanfare MUS_EVOLVED
 	message LittlerootTown_ProfessorBirchsLab_Text_ReceivedJohtoStarter
 	waitmessage
 	waitfanfare
@@ -587,7 +587,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls:: @ 81FA37F
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex:: @ 81FA3AC
-	playfanfare MUS_OBTAIN_ITEM
+	playfanfare MUS_RG_OBTAIN_KEY_ITEM
 	message LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex
 	waitfanfare
 	setflag FLAG_SYS_POKEDEX_GET

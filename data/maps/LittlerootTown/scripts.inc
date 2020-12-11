@@ -950,7 +950,7 @@ LittlerootTown_EventScript_SetReceivedRunningShoes:: @ 81E8686
 
 LittlerootTown_EventScript_GiveRunningShoes:: @ 81E8693
 	msgbox LittlerootTown_Text_WearTheseRunningShoes, MSGBOX_DEFAULT
-	playfanfare MUS_OBTAIN_ITEM
+	playfanfare MUS_RG_OBTAIN_KEY_ITEM
 	message LittlerootTown_Text_SwitchShoesWithRunningShoes
 	waitfanfare
 	setflag FLAG_RECEIVED_RUNNING_SHOES
