@@ -3250,16 +3250,33 @@ static void DoBattleIntro(void)
 
             for (i = 0; i < PARTY_SIZE; i++)
             {
-                if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
-                 || GetMonData(&gEnemyParty[i], MON_DATA_SPECIES2) == SPECIES_EGG)
+                if ((gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT) && i > 2)
                 {
-                    hpStatus[i].hp = 0xFFFF;
-                    hpStatus[i].status = 0;
+                    if (GetMonData(&gEnemyParty[i + 3], MON_DATA_SPECIES2) == SPECIES_NONE
+                     || GetMonData(&gEnemyParty[i + 3], MON_DATA_SPECIES2) == SPECIES_EGG)
+                    {
+                        hpStatus[i].hp = 0xFFFF;
+                        hpStatus[i].status = 0;
+                    }
+                    else
+                    {
+                        hpStatus[i].hp = GetMonData(&gEnemyParty[i + 3], MON_DATA_HP);
+                        hpStatus[i].status = GetMonData(&gEnemyParty[i + 3], MON_DATA_STATUS);
+                    }
                 }
                 else
                 {
-                    hpStatus[i].hp = GetMonData(&gEnemyParty[i], MON_DATA_HP);
-                    hpStatus[i].status = GetMonData(&gEnemyParty[i], MON_DATA_STATUS);
+                    if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
+                     || GetMonData(&gEnemyParty[i], MON_DATA_SPECIES2) == SPECIES_EGG)
+                    {
+                        hpStatus[i].hp = 0xFFFF;
+                        hpStatus[i].status = 0;
+                    }
+                    else
+                    {
+                        hpStatus[i].hp = GetMonData(&gEnemyParty[i], MON_DATA_HP);
+                        hpStatus[i].status = GetMonData(&gEnemyParty[i], MON_DATA_STATUS);
+                    }
                 }
             }
 
@@ -3267,40 +3284,35 @@ static void DoBattleIntro(void)
             BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
             MarkBattlerForControllerExec(gActiveBattler);
 
-            if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS) && !BATTLE_TWO_VS_ONE_OPPONENT)
+            for (i = 0; i < PARTY_SIZE; i++)
             {
-                for (i = 0; i < PARTY_SIZE; i++)
+                if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && i > 2)
                 {
-                    if (GetMonData(&gEnemyParty[i + 6], MON_DATA_SPECIES2) == SPECIES_NONE
-                     || GetMonData(&gEnemyParty[i + 6], MON_DATA_SPECIES2) == SPECIES_EGG)
+                    if (GetMonData(&gPlayerParty[i + 3], MON_DATA_SPECIES2) == SPECIES_NONE
+                     || GetMonData(&gPlayerParty[i + 3], MON_DATA_SPECIES2) == SPECIES_EGG)
                     {
                         hpStatus[i].hp = 0xFFFF;
                         hpStatus[i].status = 0;
                     }
                     else
                     {
-                        hpStatus[i].hp = GetMonData(&gEnemyParty[i + 6], MON_DATA_HP);
-                        hpStatus[i].status = GetMonData(&gEnemyParty[i + 6], MON_DATA_STATUS);
+                        hpStatus[i].hp = GetMonData(&gPlayerParty[i + 3], MON_DATA_HP);
+                        hpStatus[i].status = GetMonData(&gPlayerParty[i + 3], MON_DATA_STATUS);
                     }
-                }
-
-                gActiveBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
-                BtlController_EmitDrawPartyStatusSummary(0, hpStatus, 0x80);
-                MarkBattlerForControllerExec(gActiveBattler);
-            }
-
-            for (i = 0; i < PARTY_SIZE; i++)
-            {
-                if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
-                 || GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_EGG)
-                {
-                    hpStatus[i].hp = 0xFFFF;
-                    hpStatus[i].status = 0;
                 }
                 else
                 {
-                    hpStatus[i].hp = GetMonData(&gPlayerParty[i], MON_DATA_HP);
-                    hpStatus[i].status = GetMonData(&gPlayerParty[i], MON_DATA_STATUS);
+                    if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_NONE
+                     || GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) == SPECIES_EGG)
+                    {
+                        hpStatus[i].hp = 0xFFFF;
+                        hpStatus[i].status = 0;
+                    }
+                    else
+                    {
+                        hpStatus[i].hp = GetMonData(&gPlayerParty[i], MON_DATA_HP);
+                        hpStatus[i].status = GetMonData(&gPlayerParty[i], MON_DATA_STATUS);
+                    }
                 }
             }
 
