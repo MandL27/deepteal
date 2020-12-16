@@ -15,6 +15,8 @@ Route102_EventScript_RouteSignPetalburg:: @ 81EC0F3
 
 Route102_EventScript_Boy:: @ 81EC0FC
 	msgbox Route102_Text_CatchWholeBunchOfPokemon, MSGBOX_NPC
+	giveitem ITEM_EXP_SHARE
+	release
 	end
 
 Route102_EventScript_Calvin:: @ 81EC105
