@@ -122,11 +122,14 @@ PetalburgCity_Gym_EventScript_Norman:: @ 82049F1
 	case 8, PetalburgCity_Gym_EventScript_NormanRematch
 	msgbox PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon, MSGBOX_DEFAULT
 	closemessage
-	switch VAR_FACING
-	case DIR_SOUTH, PetalburgCity_Gym_EventScript_BeginWallyTutorialSouth
-	case DIR_NORTH, PetalburgCity_Gym_EventScript_BeginWallyTutorialNorth
-	case DIR_WEST, PetalburgCity_Gym_EventScript_BeginWallyTutorialWest
-	case DIR_EAST, PetalburgCity_Gym_EventScript_BeginWallyTutorialEast
+	@ TODO: uncomment this by release (needs type icon fix)
+	@switch VAR_FACING
+	@case DIR_SOUTH, PetalburgCity_Gym_EventScript_BeginWallyTutorialSouth
+	@case DIR_NORTH, PetalburgCity_Gym_EventScript_BeginWallyTutorialNorth
+	@case DIR_WEST, PetalburgCity_Gym_EventScript_BeginWallyTutorialWest
+	@case DIR_EAST, PetalburgCity_Gym_EventScript_BeginWallyTutorialEast
+	setvar VAR_PETALBURG_GYM_STATE, 2
+	setvar VAR_PETALBURG_CITY_STATE, 3
 	end
 
 PetalburgCity_Gym_EventScript_BeginWallyTutorialSouth:: @ 8204A80

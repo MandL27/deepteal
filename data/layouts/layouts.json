@@ -195,7 +195,7 @@
       "id": "LAYOUT_ROUTE104",
       "name": "Route104_Layout",
       "width": 40,
-      "height": 80,
+      "height": 46,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/Route104/border.bin",
@@ -4410,6 +4410,16 @@
       "secondary_tileset": "gTileset_MysteryEventsHouse",
       "border_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/border.bin",
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE104NORTH",
+      "name": "Route104North_Layout",
+      "width": 40,
+      "height": 34,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/Route104North/border.bin",
+      "blockdata_filepath": "data/layouts/Route104North/map.bin"
     }
   ]
 }
