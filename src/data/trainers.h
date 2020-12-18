@@ -4481,7 +4481,7 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_JOSH] =
     {
-        .partyFlags = F_TRAINER_PARTY_CUSTOM_MOVESET,
+        .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_YOUNGSTER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_YOUNGSTER,
@@ -4490,7 +4490,7 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
         .partySize = ARRAY_COUNT(sParty_Josh),
-        .party = {.NoItemCustomMoves = sParty_Josh},
+        .party = {.NoItemDefaultMoves = sParty_Josh},
     },
 
     [TRAINER_TOMMY] =
