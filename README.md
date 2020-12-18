@@ -1,3 +1,3 @@
-# Repository WIP
+# Emerald Upgrade
 
-This repo is currently a work in progress. Readme contents are impractical as features would update so frequently that updating the readme every time would be a waste of time.
+This is an enhancement hack of Pokémon Emerald, built using pret's `pokeemerald` disassembly. The end goal is to create a hack that improves upon the original without losing too much of gen 3's character.
