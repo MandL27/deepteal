@@ -143,7 +143,7 @@
 	.macro jumpifability param0:req, ability:req, ptr:req
 	.byte 0x1e
 	.byte \param0
-	.byte \ability
+	.2byte \ability
 	.4byte \ptr
 	.endm
 
@@ -371,7 +371,7 @@
 
 	.macro jumpifabilitypresent ability:req, ptr:req
 	.byte 0x43
-	.byte \ability
+	.2byte \ability
 	.4byte \ptr
 	.endm
 
@@ -1753,6 +1753,15 @@
 	
 	.macro jumpifabsent battler:req, ptr:req
 	various \battler, VARIOUS_JUMP_IF_ABSENT
+	.4byte \ptr
+	.endm
+
+	.macro destroyabilitypopup
+	various BS_ABILITY_BATTLER, VARIOUS_DESTROY_ABILITY_POPUP
+	.endm
+
+	.macro gettotemboost ptr:req
+	various BS_ATTACKER, VARIOUS_TOTEM_BOOST
 	.4byte \ptr
 	.endm
 	
