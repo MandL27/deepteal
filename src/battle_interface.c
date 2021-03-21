@@ -1033,7 +1033,7 @@ void UpdateOamPriorityInAllHealthboxes(u8 priority)
         if (indicatorSpriteId != 0xFF)
             gSprites[indicatorSpriteId].oam.priority = priority;
         
-        #if HIDE_HEALTHBOXES_DURING_ANIMS
+        #if B_HIDE_HEALTHBOXES_DURING_ANIMS
         if (IsBattlerAlive(i))
             TryToggleHealboxVisibility(priority, healthboxLeftSpriteId, healthboxRightSpriteId, healthbarSpriteId, indicatorSpriteId);
         #endif
@@ -2093,8 +2093,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 {
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     void *ptr;
-    const u8 *genderTxt;
-    u32 windowId, spriteTileOffset, species;
+    u32 windowId, spriteTileNum, species;
     u8 *windowTileData;
     u8 gender;
     struct Pokemon *illusionMon = GetIllusionMonPtr(gSprites[healthboxSpriteId].hMain_Battler);
@@ -2130,27 +2129,27 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
         break;
     }
 
-    spriteTileOffset = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
+    spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].data[6]) == B_SIDE_PLAYER)
     {
         ptr = (void*)(OBJ_VRAM0);
         if (!IsDoubleBattle())
         {
-            TextIntoHealthboxObject((void*)(OBJ_VRAM0 + spriteTileOffset + (9 * TILE_SIZE_4BPP)), windowTileData, 7);
-            ptr += spriteTileOffset + 0x800;
+            TextIntoHealthboxObject((void*)(OBJ_VRAM0 + spriteTileNum + (9 * TILE_SIZE_4BPP)), windowTileData, 7);
+            ptr += spriteTileNum + 0x800;
             TextIntoHealthboxObject(ptr + (8 * TILE_SIZE_4BPP), windowTileData + (7 * TILE_SIZE_4BPP), 1);
         }
         else
         {
-            TextIntoHealthboxObject((void*)(OBJ_VRAM0 + spriteTileOffset + (1 * TILE_SIZE_4BPP)), windowTileData, 7);
-            ptr += spriteTileOffset + 0x400;
+            TextIntoHealthboxObject((void*)(OBJ_VRAM0 + spriteTileNum + (1 * TILE_SIZE_4BPP)), windowTileData, 7);
+            ptr += spriteTileNum + 0x400;
             TextIntoHealthboxObject(ptr, windowTileData + (7 * TILE_SIZE_4BPP), 1);
         }
     }
     else
     {
-        TextIntoHealthboxObject((void*)(VRAM + 0x10020 + spriteTileOffset), windowTileData, 7);
+        TextIntoHealthboxObject((void*)(VRAM + 0x10020 + spriteTileNum), windowTileData, 7);
     }
 
     RemoveWindowOnHealthbox(windowId);
