@@ -144,6 +144,7 @@ DewfordTown_Gym_EventScript_StopCountingTrainers:: @ 81FC7C1
 	return
 
 DewfordTown_Gym_EventScript_Brawly:: @ 81FC7C2
+	setvar VAR_MUGSHOT_ID, MUGSHOT_BRAWLY
 	trainerbattle_single TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	compare VAR_RESULT, TRUE
