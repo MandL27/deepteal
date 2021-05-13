@@ -1,0 +1,26 @@
+#ifndef GUARD_CONSTANTS_BATTLE_TRANSITION_H
+#define GUARD_CONSTANTS_BATTLE_TRANSITION_H
+
+#define MUGSHOT_BRENDAN     0
+#define MUGSHOT_MAY         1
+#define MUGSHOT_ROXANNE     2
+#define MUGSHOT_BRAWLY      3
+#define MUGSHOT_WATTSON     4
+#define MUGSHOT_FLANNERY    5
+#define MUGSHOT_NORMAN      6
+#define MUGSHOT_WINONA      7
+#define MUGSHOT_TATE_LIZA   8
+#define MUGSHOT_JUAN        9
+#define MUGSHOT_SIDNEY     10
+#define MUGSHOT_PHOEBE     11
+#define MUGSHOT_GLACIA     12
+#define MUGSHOT_DRAKE      13
+#define MUGSHOT_WALLACE    14
+#define MUGSHOT_MAXIE      15
+#define MUGSHOT_ARCHIE     16
+#define MUGSHOT_WALLY      17
+#define MUGSHOT_STEVEN     18
+
+#define MUGSHOTS_COUNT     19
+
+#endif //GUARD_CONSTANTS_BATTLE_TRANSITION_H
