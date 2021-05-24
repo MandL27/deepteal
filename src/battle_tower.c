@@ -3044,7 +3044,7 @@ static void FillPartnerParty(u16 trainerId)
         {
             const struct TrainerMon *partyData = gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].party.TrainerMon;
 
-            fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
+            fixedIV = partyData[i].iv + TRAINER_IV_MODIFIER;
 
             for (j = 0; gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].trainerName[j] != EOS; j++)
                 nameHash += gTrainers[trainerId - TRAINER_CUSTOM_PARTNER].trainerName[j];
