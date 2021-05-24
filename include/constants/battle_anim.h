@@ -496,37 +496,39 @@
 // table ids for general animations (gBattleAnims_General)
 #define B_ANIM_CASTFORM_CHANGE          0
 #define B_ANIM_STATS_CHANGE             1
-#define B_ANIM_SUBSTITUTE_FADE          2
-#define B_ANIM_SUBSTITUTE_APPEAR        3
-#define B_ANIM_POKEBLOCK_THROW          4
-#define B_ANIM_ITEM_KNOCKOFF            5
-#define B_ANIM_TURN_TRAP                6
-#define B_ANIM_HELD_ITEM_EFFECT         7
-#define B_ANIM_SMOKEBALL_ESCAPE         8
-#define B_ANIM_HANGED_ON                9
-#define B_ANIM_RAIN_CONTINUES           10
-#define B_ANIM_SUN_CONTINUES            11
-#define B_ANIM_SANDSTORM_CONTINUES      12
-#define B_ANIM_HAIL_CONTINUES           13
-#define B_ANIM_LEECH_SEED_DRAIN         14
-#define B_ANIM_MON_HIT                  15
-#define B_ANIM_ITEM_STEAL               16
-#define B_ANIM_SNATCH_MOVE              17
-#define B_ANIM_FUTURE_SIGHT_HIT         18
-#define B_ANIM_DOOM_DESIRE_HIT          19
-#define B_ANIM_FOCUS_PUNCH_SETUP        20
-#define B_ANIM_INGRAIN_HEAL             21
-#define B_ANIM_WISH_HEAL                22
-#define B_ANIM_MEGA_EVOLUTION           23
-#define B_ANIM_TERRAIN_MISTY            24
-#define B_ANIM_TERRAIN_GRASSY           25
-#define B_ANIM_TERRAIN_ELECTRIC         26
-#define B_ANIM_TERRAIN_PSYCHIC          27
-#define B_ANIM_ILLUSION_OFF             28
-#define B_ANIM_FORM_CHANGE              29
-#define B_ANIM_SLIDE_OFFSCREEN          30 // for Emergency Exit
-#define B_ANIM_RESTORE_BG               31 // for Terrain Endings
-#define B_ANIM_TOTEM_FLARE              32 // Totem boosts aura flare
+#define B_ANIM_HEAL						2
+#define B_ANIM_SUBSTITUTE_FADE          3
+#define B_ANIM_SUBSTITUTE_APPEAR        4
+#define B_ANIM_POKEBLOCK_THROW          5
+#define B_ANIM_ITEM_KNOCKOFF            6
+#define B_ANIM_TURN_TRAP                7
+#define B_ANIM_HELD_ITEM_EFFECT         8
+#define B_ANIM_USE_ITEM_EFFECT			9
+#define B_ANIM_SMOKEBALL_ESCAPE         10
+#define B_ANIM_HANGED_ON                11
+#define B_ANIM_RAIN_CONTINUES           12
+#define B_ANIM_SUN_CONTINUES            13
+#define B_ANIM_SANDSTORM_CONTINUES      14
+#define B_ANIM_HAIL_CONTINUES           15
+#define B_ANIM_LEECH_SEED_DRAIN         16
+#define B_ANIM_MON_HIT                  17
+#define B_ANIM_ITEM_STEAL               18
+#define B_ANIM_SNATCH_MOVE              19
+#define B_ANIM_FUTURE_SIGHT_HIT         20
+#define B_ANIM_DOOM_DESIRE_HIT          21
+#define B_ANIM_FOCUS_PUNCH_SETUP        22
+#define B_ANIM_INGRAIN_HEAL             23
+#define B_ANIM_WISH_HEAL                24
+#define B_ANIM_MEGA_EVOLUTION           25
+#define B_ANIM_TERRAIN_MISTY            26
+#define B_ANIM_TERRAIN_GRASSY           27
+#define B_ANIM_TERRAIN_ELECTRIC         28
+#define B_ANIM_TERRAIN_PSYCHIC          29
+#define B_ANIM_ILLUSION_OFF             30
+#define B_ANIM_FORM_CHANGE              31
+#define B_ANIM_SLIDE_OFFSCREEN          32 // for Emergency Exit
+#define B_ANIM_RESTORE_BG               33 // for Terrain Endings
+#define B_ANIM_TOTEM_FLARE              34 // Totem boosts aura flare
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

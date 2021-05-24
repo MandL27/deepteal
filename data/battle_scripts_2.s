@@ -139,11 +139,12 @@ BattleScript_PlayerUsesItem::
 
 BattleScript_OpponentUsesHealItem::
 	printstring STRINGID_EMPTYSTRING3
-	pause 0x30
-	playse SE_USE_ITEM
+	pause 0x10
 	printstring STRINGID_TRAINER1USEDITEM
-	waitmessage 0x40
+	playanimation BS_ATTACKER, B_ANIM_USE_ITEM_EFFECT, NULL
+	waitmessage 0x20
 	bichalfword gMoveResultFlags, MOVE_RESULT_NO_EFFECT
+	playanimation BS_ATTACKER, B_ANIM_HEAL, NULL
 	useitemonopponent
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
 	healthbarupdate BS_ATTACKER
@@ -157,10 +158,9 @@ BattleScript_OpponentUsesHealItem::
 
 BattleScript_OpponentUsesStatusCureItem::
 	printstring STRINGID_EMPTYSTRING3
-	pause 0x30
-	playse SE_USE_ITEM
+	pause 0x10
 	printstring STRINGID_TRAINER1USEDITEM
-	waitmessage 0x40
+	playanimation BS_ATTACKER, B_ANIM_USE_ITEM_EFFECT, NULL
 	useitemonopponent
 	printfromtable gTrainerItemCuredStatusStringIds
 	waitmessage 0x40
@@ -171,10 +171,11 @@ BattleScript_OpponentUsesStatusCureItem::
 
 BattleScript_OpponentUsesXItem::
 	printstring STRINGID_EMPTYSTRING3
-	pause 0x30
-	playse SE_USE_ITEM
+	pause 0x10
 	printstring STRINGID_TRAINER1USEDITEM
+	playanimation BS_ATTACKER, B_ANIM_USE_ITEM_EFFECT, NULL
 	waitmessage 0x40
+	@playanimation BS_ATTACKER, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1 @ no clue if this is even right
 	useitemonopponent
 	printfromtable gStatUpStringIds
 	waitmessage 0x40

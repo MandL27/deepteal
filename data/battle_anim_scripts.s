@@ -795,12 +795,14 @@ gBattleAnims_StatusConditions::
 gBattleAnims_General::
 	.4byte General_CastformChange           @ B_ANIM_CASTFORM_CHANGE
 	.4byte General_StatsChange              @ B_ANIM_STATS_CHANGE
+	.4byte General_Healing					@ B_ANIM_HEAL
 	.4byte General_SubstituteFade           @ B_ANIM_SUBSTITUTE_FADE
 	.4byte General_SubstituteAppear         @ B_ANIM_SUBSTITUTE_APPEAR
 	.4byte General_PokeblockThrow           @ B_ANIM_POKEBLOCK_THROW
 	.4byte General_ItemKnockoff             @ B_ANIM_ITEM_KNOCKOFF
 	.4byte General_TurnTrap                 @ B_ANIM_TURN_TRAP
 	.4byte General_HeldItemEffect           @ B_ANIM_HELD_ITEM_EFFECT
+	.4byte General_UseItemEffect			@ B_ANIM_USE_ITEM_EFFECT
 	.4byte General_SmokeballEscape          @ B_ANIM_SMOKEBALL_ESCAPE
 	.4byte General_HangedOn                 @ B_ANIM_HANGED_ON
 	.4byte General_Rain                     @ B_ANIM_RAIN_CONTINUES
@@ -23947,6 +23949,12 @@ General_StatsChange:
 	waitforvisualfinish
 	end
 
+General_Healing:
+	playsewithpan SE_M_ABSORB_2, SOUND_PAN_ATTACKER
+	createvisualtask AnimTask_StatusClearedEffect, 2, 1
+	waitforvisualfinish
+	end
+
 General_SubstituteFade:
 	monbg ANIM_ATTACKER
 	createvisualtask AnimTask_SubstituteFadeToInvisible, 5
@@ -24079,8 +24087,6 @@ Status_Infestation:
 	end
 
 General_HeldItemEffect:
-	loadspritegfx ANIM_TAG_THIN_RING
-	loadspritegfx ANIM_TAG_SPARKLE_2
 	delay 0
 	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_RotateMonToSideAndRestore, 2, 16, 128, ANIM_ATTACKER, 2
@@ -24091,9 +24097,12 @@ General_HeldItemEffect:
 	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
 	createvisualtask AnimTask_RotateMonToSideAndRestore, 2, 16, 128, ANIM_ATTACKER, 2
 	waitforvisualfinish
-	playsewithpan SE_M_MORNING_SUN, SOUND_PAN_ATTACKER
-	call GrantingStarsEffect
+	goto General_UseItemEffect
 	waitforvisualfinish
+	end
+
+General_UseItemEffect:
+	loadspritegfx ANIM_TAG_THIN_RING
 	playsewithpan SE_SHINY, SOUND_PAN_ATTACKER
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 2, 3, 7, 0, RGB(17, 31, 25)
 	createsprite gThinRingExpandingSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 0, 0
