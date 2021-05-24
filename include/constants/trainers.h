@@ -377,4 +377,11 @@
 #define F_TRAINER_PARTY_HELD_ITEM      (1 << 1)
 #define F_TRAINER_PARTY_CUSTOM_MON     (1 << 2)
 
+// Use for trainer parties.
+#define TRAINER_MON_FEMALE     1
+#define TRAINER_MON_MALE       2
+
+#define TRAINER_MON_FRIENDLY     1
+#define TRAINER_MON_UNFRIENDLY   2
+
 #endif  // GUARD_TRAINERS_H
