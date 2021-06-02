@@ -2244,6 +2244,8 @@ BattleScript_AbsorbLiquidOoze::
 	manipulatedamage DMG_CHANGE_SIGN
 	setbyte cMULTISTRING_CHOOSER, 0x1
 BattleScript_AbsorbUpdateHp::
+	jumpiffullhp BS_ATTACKER, BattleScript_AbsorbTryFainting
+	playanimation BS_ATTACKER, B_ANIM_HEAL, NULL
 	healthbarupdate BS_ATTACKER
 	datahpupdate BS_ATTACKER
 	jumpifmovehadnoeffect BattleScript_AbsorbTryFainting
@@ -4147,6 +4149,7 @@ BattleScript_PresentHealTarget::
 	attackanimation
 	waitanimation
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	playanimation BS_ATTACKER, B_ANIM_HEAL, NULL
 	healthbarupdate BS_TARGET
 	datahpupdate BS_TARGET
 	printstring STRINGID_PKMNREGAINEDHEALTH

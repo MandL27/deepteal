@@ -858,8 +858,6 @@ Move_ROOST:
 	createsprite gFallingFeatherSpriteTemplate, ANIM_ATTACKER, 0, 0, -16, 96, 2, 104, 11304, 32, 1
 	waitforvisualfinish
 	clearmonbg ANIM_ATTACKER
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 Move_GRAVITY:
@@ -1747,9 +1745,6 @@ Move_AQUA_RING:
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff
-	delay 1
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 Move_MAGNET_RISE:
@@ -2344,9 +2339,6 @@ Move_DRAIN_PUNCH:
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 3, 15, 1
 	delay 20
 	call MegaDrainAbsorbEffect
-	waitforvisualfinish
-	delay 15
-	call HealingEffect
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
@@ -4073,9 +4065,6 @@ Move_HEAL_ORDER:
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff
-	delay 1
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 Move_HEAD_SMASH:
@@ -6372,8 +6361,6 @@ Move_HORN_LEECH:
 	playsewithpan SE_M_HORN_ATTACK, SOUND_PAN_TARGET
 	call GigaDrainAbsorbEffect
 	waitforvisualfinish
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 Move_SACRED_SWORD:
@@ -8352,8 +8339,6 @@ Move_DRAINING_KISS:
 	call AbsorbEffect
 	waitforvisualfinish
 	delay 15
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 Move_CRAFTY_SHIELD::
@@ -9617,8 +9602,6 @@ Move_OBLIVION_WING::
 	call OblivionWingBeam
 	delay 15
 	visible ANIM_ATTACKER
-	call HealingEffect
-	waitforvisualfinish
 	launchtask AnimTask_BlendBattleAnimPal 0xa 0x5 ANIM_PAL_BG 0x1 0xE 0x0 0x0   @From black
 	waitforvisualfinish
 	end
@@ -10219,8 +10202,6 @@ Move_SHORE_UP::
 	launchtemplate gFlyingSandCrescentSpriteTemplate 0x28 0x4 0x0 0xb00 0x60 0x0
 	delay 0xa
 	launchtemplate gFlyingSandCrescentSpriteTemplate 0x28 0x4 0x3c 0xa00 0x60 0x0
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 Move_FIRST_IMPRESSION::
@@ -17012,8 +16993,6 @@ Move_MOONLIGHT:
 	delay 20
 	createvisualtask AnimTask_MoonlightEndFade, 2
 	waitforvisualfinish
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 Move_EXTREME_SPEED:
@@ -17723,8 +17702,6 @@ Move_SLACK_OFF:
 	loadspritegfx ANIM_TAG_BLUE_STAR
 	createvisualtask AnimTask_SlackOffSquish, 2, ANIM_ATTACKER
 	playsewithpan SE_M_YAWN, SOUND_PAN_ATTACKER
-	waitforvisualfinish
-	call HealingEffect
 	waitforvisualfinish
 	end
 
@@ -19302,7 +19279,6 @@ SignalBeamOrbs:
 
 Move_ABSORB:
 	loadspritegfx ANIM_TAG_ORBS
-	loadspritegfx ANIM_TAG_BLUE_STAR
 	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_DEF_PARTNER
 	monbgprio_2A ANIM_TARGET
@@ -19318,8 +19294,6 @@ Move_ABSORB:
 	call AbsorbEffect
 	waitforvisualfinish
 	delay 15
-	call HealingEffect
-	waitforvisualfinish
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 4, 0, RGB(13, 31, 12)
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
@@ -19371,10 +19345,6 @@ Move_MEGA_DRAIN:
 	call MegaDrainAbsorbEffect
 	waitforvisualfinish
 	delay 15
-	call HealingEffect
-	waitforvisualfinish
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 8, 0, RGB(13, 31, 12)
-	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
 	end
@@ -19432,8 +19402,6 @@ Move_GIGA_DRAIN:
 	call GigaDrainAbsorbEffect
 	waitforvisualfinish
 	delay 15
-	call HealingEffect
-	waitforvisualfinish
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 12, 0, RGB(13, 31, 12)
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
@@ -19487,7 +19455,6 @@ Move_LEECH_LIFE:
 	loadspritegfx ANIM_TAG_NEEDLE
 	loadspritegfx ANIM_TAG_ORBS
 	delay 1
-	loadspritegfx ANIM_TAG_BLUE_STAR
 	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_DEF_PARTNER
 	monbgprio_2A ANIM_TARGET
@@ -19505,8 +19472,6 @@ Move_LEECH_LIFE:
 	call AbsorbEffect
 	waitforvisualfinish
 	delay 15
-	call HealingEffect
-	waitforvisualfinish
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 7, 0, RGB_BLACK
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
@@ -19521,9 +19486,6 @@ Move_SYNTHESIS:
 	waitforvisualfinish
 	unloadspritegfx ANIM_TAG_SPARKLE_2
 	delay 1
-	loadspritegfx ANIM_TAG_BLUE_STAR
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 Move_TOXIC:
@@ -20631,8 +20593,6 @@ Move_DREAM_EATER:
 	call DreamEaterAbsorb
 	waitforvisualfinish
 	delay 15
-	call HealingEffect
-	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
 	delay 1
@@ -21182,9 +21142,6 @@ Move_RECOVER:
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER
 	blendoff
-	delay 1
-	call HealingEffect
-	waitforvisualfinish
 	end
 
 RecoverAbsorbEffect:
@@ -24294,8 +24251,6 @@ General_IngrainHeal:
 	call AbsorbEffect
 	waitforvisualfinish
 	delay 15
-	call HealingEffect
-	waitforvisualfinish
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 4, 0, RGB(13, 31, 12)
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
@@ -24310,9 +24265,6 @@ General_WishHeal:
 	call GrantingStarsEffect
 	waitforvisualfinish
 	unloadspritegfx ANIM_TAG_SPARKLE_2
-	loadspritegfx ANIM_TAG_BLUE_STAR
-	call HealingEffect
-	waitforvisualfinish
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 3, 10, 0, RGB_BLACK
 	end
 
