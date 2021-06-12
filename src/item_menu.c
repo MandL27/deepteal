@@ -234,22 +234,6 @@ static const struct MenuAction sItemMenuActions[] = {
 
 static EWRAM_DATA u8 sMoveTypeSpriteId = 0;
 
-static const struct OamData sOamData_MoveTypes =
-{
-    .y = 0,
-    .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = 0,
-    .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(32x16),
-    .x = 0,
-    .matrixNum = 0,
-    .size = SPRITE_SIZE(32x16),
-    .tileNum = 0,
-    .priority = 1,
-    .paletteNum = 0,
-    .affineParam = 0,
-};
 static const union AnimCmd sSpriteAnim_TypeNormal[] = {
     ANIMCMD_FRAME(TYPE_NORMAL * 8, 0, FALSE, FALSE),
     ANIMCMD_END
@@ -346,23 +330,6 @@ static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES
     sSpriteAnim_TypeDragon,
     sSpriteAnim_TypeDark,
     sSpriteAnim_TypeFairy
-};
-
-static const struct CompressedSpriteSheet sSpriteSheet_MoveTypes =
-{
-    .data = gMoveTypes_Gfx,
-    .size = (NUMBER_OF_MON_TYPES) * 0x100,
-    .tag = TAG_MOVE_TYPES
-};
-static const struct SpriteTemplate sSpriteTemplate_MoveTypes =
-{
-    .tileTag = TAG_MOVE_TYPES,
-    .paletteTag = TAG_MOVE_TYPES,
-    .oam = &sOamData_MoveTypes,
-    .anims = sSpriteAnimTable_MoveTypes,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
 };
 
 static const u8 sMoveTypeToOamPaletteNum[NUMBER_OF_MON_TYPES] =
@@ -947,8 +914,8 @@ bool8 LoadBagMenu_Graphics(void)
                 LoadCompressedSpriteSheet(&gBagMaleSpriteSheet);
             else
                 LoadCompressedSpriteSheet(&gBagFemaleSpriteSheet);
-            LoadCompressedSpriteSheet(&sSpriteSheet_MoveTypes);
-            sMoveTypeSpriteId = CreateSprite(&sSpriteTemplate_MoveTypes, 0, 0, 2);
+            LoadCompressedSpriteSheet(&gSpriteSheet_MoveTypes);
+            sMoveTypeSpriteId = CreateSprite(&gSpriteTemplate_MoveTypes, 0, 0, 2);
             (&gSprites[sMoveTypeSpriteId])->invisible = TRUE;
             gBagMenu->graphicsLoadState++;
             break;
@@ -2665,7 +2632,7 @@ void PrintTMHMMoveData(u16 itemId)
         //BlitMenuInfoIcon(4, gBattleMoves[moveId].type + 1, 0, 0);
         spr = &gSprites[sMoveTypeSpriteId];
         StartSpriteAnim(spr, gBattleMoves[moveId].type);
-        spr->oam.paletteNum = sMoveTypeToOamPaletteNum[gBattleMoves[moveId].type];
+        spr->oam.paletteNum = gMoveTypeToOamPaletteNum[gBattleMoves[moveId].type];
         spr->pos1.x = 72;
         spr->pos1.y = 110;
         spr->invisible = FALSE;

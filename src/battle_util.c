@@ -69,6 +69,7 @@ void HandleAction_UseMove(void)
 {
     u32 i, side, moveType, var = 4;
 
+    DestroyTypeIcon();
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
     if (gBattleStruct->field_91 & gBitTable[gBattlerAttacker] || !IsBattlerAlive(gBattlerAttacker))
     {

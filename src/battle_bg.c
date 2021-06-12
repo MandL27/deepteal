@@ -957,16 +957,12 @@ void LoadBattleTextboxAndBackground(void)
     CopyBgTilemapBufferToVram(0);
     LoadCompressedPalette(gBattleTextboxPalette, 0, 0x40);
     LoadBattleMenuWindowGfx();
-    #if B_TERRAIN_BG_CHANGE == TRUE
+    #if B_TERRAIN_BG_CHANGE
         DrawTerrainTypeBattleBackground();
     #else
         DrawMainBattleBackground();
     #endif
-    LoadTypeIcon();
-}
-
-void LoadTypeIcon(void)
-{
+    gBattleMoveTypeSpriteId = MAX_SPRITES;
     LoadCompressedPalette(gMoveTypes_Pal, 0x1D0, 0x60);
 }
 

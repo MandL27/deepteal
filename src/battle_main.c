@@ -34,6 +34,7 @@
 #include "pokeball.h"
 #include "pokedex.h"
 #include "pokemon.h"
+#include "pokemon_summary_screen.h"
 #include "random.h"
 #include "recorded_battle.h"
 #include "roamer.h"
@@ -230,6 +231,7 @@ EWRAM_DATA u16 gPartnerSpriteId = 0;
 EWRAM_DATA struct TotemBoost gTotemBoosts[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA bool8 gHasFetchedBall = FALSE;
 EWRAM_DATA u8 gLastUsedBall = 0;
+EWRAM_DATA u8 gBattleMoveTypeSpriteId = 0;
 
 // IWRAM common vars
 void (*gPreBattleCallback1)(void);
@@ -4022,6 +4024,7 @@ static void HandleTurnActionSelectionState(void)
                         }
                         else if (TrySetCantSelectMoveBattleScript())
                         {
+                            DestroyTypeIcon();
                             RecordedBattle_ClearBattlerAction(gActiveBattler, 1);
                             gBattleCommunication[gActiveBattler] = STATE_SELECTION_SCRIPT;
                             *(gBattleStruct->selectionScriptFinished + gActiveBattler) = FALSE;
@@ -4031,6 +4034,7 @@ static void HandleTurnActionSelectionState(void)
                         }
                         else
                         {
+                            DestroyTypeIcon();
                             if (!(gBattleTypeFlags & BATTLE_TYPE_PALACE))
                             {
                                 RecordedBattle_SetBattlerAction(gActiveBattler, gBattleResources->bufferB[gActiveBattler][2]);
@@ -5153,5 +5157,41 @@ void SetTotemBoost(void)
             gTotemBoosts[battlerId].statChanges[i] = *(&gSpecialVar_0x8001 + i);
             gTotemBoosts[battlerId].stats |= 0x80;  // used as a flag for the "totem flared to life" script
         }
+    }
+}
+
+// type icons
+static void SetTypeIconSpriteInvisibility(u8 spriteId, bool8 invisible)
+{
+    gSprites[spriteId].invisible = invisible;
+}
+
+void SetTypeIconPal(u8 typeId, u8 spriteId)
+{
+    struct Sprite *sprite;
+
+    sprite = &gSprites[spriteId];
+    StartSpriteAnim(sprite, typeId);
+    sprite->oam.paletteNum = gMoveTypeToOamPaletteNum[typeId];
+    SetTypeIconSpriteInvisibility(spriteId, FALSE);
+}
+
+void LoadTypeIcon(u8 type)
+{
+    if (gBattleMoveTypeSpriteId == MAX_SPRITES)
+    {
+        LoadCompressedSpriteSheet(&gSpriteSheet_MoveTypes);
+        gBattleMoveTypeSpriteId = CreateSprite(&gSpriteTemplate_MoveTypes, 216, 128, 0);
+        gSprites[gBattleMoveTypeSpriteId].oam.priority = 0;
+        SetTypeIconPal(type, gBattleMoveTypeSpriteId);
+    }
+}
+
+void DestroyTypeIcon(void)
+{
+    if (gBattleMoveTypeSpriteId != MAX_SPRITES)
+    {
+        DestroySpriteAndFreeResources(&gSprites[gBattleMoveTypeSpriteId]);
+        gBattleMoveTypeSpriteId = MAX_SPRITES;
     }
 }

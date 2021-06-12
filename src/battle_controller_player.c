@@ -5,6 +5,7 @@
 #include "battle_controllers.h"
 #include "battle_dome.h"
 #include "battle_interface.h"
+#include "battle_main.h"
 #include "battle_message.h"
 #include "battle_setup.h"
 #include "battle_tv.h"
@@ -41,168 +42,6 @@
 #include "constants/rgb.h"
 
 extern struct MusicPlayerInfo gMPlayInfo_BGM;
-
-// type icon data
-
-#define TAG_MOVE_TYPES 0xE0F0
-static EWRAM_DATA u8 sBattleMoveTypeSpriteId = 0;
-
-static const struct OamData sOamData_MoveTypes =
-{
-    .y = 0,
-    .affineMode = ST_OAM_AFFINE_OFF,
-    .objMode = ST_OAM_OBJ_NORMAL,
-    .mosaic = 0,
-    .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(32x16),
-    .x = 0,
-    .matrixNum = 0,
-    .size = SPRITE_SIZE(32x16),
-    .tileNum = 0,
-    .priority = 0,
-    .paletteNum = 0,
-    .affineParam = 0,
-};
-static const union AnimCmd sSpriteAnim_TypeNormal[] = {
-    ANIMCMD_FRAME(TYPE_NORMAL * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeFighting[] = {
-    ANIMCMD_FRAME(TYPE_FIGHTING * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeFlying[] = {
-    ANIMCMD_FRAME(TYPE_FLYING * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypePoison[] = {
-    ANIMCMD_FRAME(TYPE_POISON * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeGround[] = {
-    ANIMCMD_FRAME(TYPE_GROUND * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeRock[] = {
-    ANIMCMD_FRAME(TYPE_ROCK * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeBug[] = {
-    ANIMCMD_FRAME(TYPE_BUG * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeGhost[] = {
-    ANIMCMD_FRAME(TYPE_GHOST * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeSteel[] = {
-    ANIMCMD_FRAME(TYPE_STEEL * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeMystery[] = {
-    ANIMCMD_FRAME(TYPE_MYSTERY * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeFire[] = {
-    ANIMCMD_FRAME(TYPE_FIRE * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeWater[] = {
-    ANIMCMD_FRAME(TYPE_WATER * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeGrass[] = {
-    ANIMCMD_FRAME(TYPE_GRASS * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeElectric[] = {
-    ANIMCMD_FRAME(TYPE_ELECTRIC * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypePsychic[] = {
-    ANIMCMD_FRAME(TYPE_PSYCHIC * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeIce[] = {
-    ANIMCMD_FRAME(TYPE_ICE * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeDragon[] = {
-    ANIMCMD_FRAME(TYPE_DRAGON * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeDark[] = {
-    ANIMCMD_FRAME(TYPE_DARK * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd sSpriteAnim_TypeFairy[] = {
-    ANIMCMD_FRAME(TYPE_FAIRY * 8, 0, FALSE, FALSE),
-    ANIMCMD_END
-};
-static const union AnimCmd *const sSpriteAnimTable_MoveTypes[NUMBER_OF_MON_TYPES] = {
-    sSpriteAnim_TypeNormal,
-    sSpriteAnim_TypeFighting,
-    sSpriteAnim_TypeFlying,
-    sSpriteAnim_TypePoison,
-    sSpriteAnim_TypeGround,
-    sSpriteAnim_TypeRock,
-    sSpriteAnim_TypeBug,
-    sSpriteAnim_TypeGhost,
-    sSpriteAnim_TypeSteel,
-    sSpriteAnim_TypeMystery,
-    sSpriteAnim_TypeFire,
-    sSpriteAnim_TypeWater,
-    sSpriteAnim_TypeGrass,
-    sSpriteAnim_TypeElectric,
-    sSpriteAnim_TypePsychic,
-    sSpriteAnim_TypeIce,
-    sSpriteAnim_TypeDragon,
-    sSpriteAnim_TypeDark,
-    sSpriteAnim_TypeFairy
-};
-
-
-static const struct CompressedSpriteSheet sSpriteSheet_MoveTypes =
-{
-    .data = gMoveTypes_Gfx,
-    .size = (NUMBER_OF_MON_TYPES) * 0x100,
-    .tag = TAG_MOVE_TYPES
-};
-static const struct SpriteTemplate sSpriteTemplate_MoveTypes =
-{
-    .tileTag = TAG_MOVE_TYPES,
-    .paletteTag = TAG_MOVE_TYPES,
-    .oam = &sOamData_MoveTypes,
-    .anims = sSpriteAnimTable_MoveTypes,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
-};
-
-static const u8 sMoveTypeToOamPaletteNum[NUMBER_OF_MON_TYPES] =
-{
-    [TYPE_NORMAL] = 13,
-    [TYPE_FIGHTING] = 13,
-    [TYPE_FLYING] = 14,
-    [TYPE_POISON] = 14,
-    [TYPE_GROUND] = 13,
-    [TYPE_ROCK] = 13,
-    [TYPE_BUG] = 15,
-    [TYPE_GHOST] = 14,
-    [TYPE_STEEL] = 13,
-    [TYPE_MYSTERY] = 15,
-    [TYPE_FIRE] = 13,
-    [TYPE_WATER] = 14,
-    [TYPE_GRASS] = 15,
-    [TYPE_ELECTRIC] = 13,
-    [TYPE_PSYCHIC] = 14,
-    [TYPE_ICE] = 14,
-    [TYPE_DRAGON] = 15,
-    [TYPE_DARK] = 13,
-    [TYPE_FAIRY] = 14,
-};
-
-// end type icon data
 
 // this file's functions
 static void PlayerHandleGetMonData(void);
@@ -282,7 +121,6 @@ static void DestroyExpTaskAndCompleteOnInactiveTextPrinter(u8 taskId);
 static void Task_GiveExpWithExpBar(u8 taskId);
 static void Task_UpdateLvlInHealthbox(u8 taskId);
 static void PrintLinkStandbyMsg(void);
-static void DestroyTypeIcon(void);
 static u32 CopyPlayerMonData(u8 monId, u8 *dst);
 static void SetPlayerMonData(u8 monId);
 static void StartSendOutAnim(u8 battlerId, bool8 dontClearSubstituteBit);
@@ -403,10 +241,10 @@ static void CompleteOnBankSpritePosX_0(void)
 static void HandleInputChooseAction(void)
 {
     u16 itemId = gBattleResources->bufferA[gActiveBattler][2] | (gBattleResources->bufferA[gActiveBattler][3] << 8);
-    if (sBattleMoveTypeSpriteId != 0)
-    {
-        (&gSprites[sBattleMoveTypeSpriteId])->invisible = TRUE;
-    }
+
+    if (gBattleMoveTypeSpriteId != MAX_SPRITES)
+        gSprites[gBattleMoveTypeSpriteId].invisible = TRUE;
+
     DoBounceEffect(gActiveBattler, BOUNCE_HEALTHBOX, 7, 1);
     DoBounceEffect(gActiveBattler, BOUNCE_MON, 7, 1);
 
@@ -538,7 +376,6 @@ static void HandleInputChooseTarget(void)
             BtlController_EmitTwoReturnValues(1, 10, gMoveSelectionCursor[gActiveBattler] | (gMultiUsePlayerCursor << 8));
         EndBounceEffect(gMultiUsePlayerCursor, BOUNCE_HEALTHBOX);
         HideMegaTriggerSprite();
-        DestroyTypeIcon();
         PlayerBufferExecCompleted();
     }
     else if (JOY_NEW(B_BUTTON) || gPlayerDpadHoldFrames > 59)
@@ -707,11 +544,6 @@ static void HandleInputChooseMove(void)
     u32 canSelectTarget = 0;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
 
-    if (sBattleMoveTypeSpriteId == 0)
-    {
-        sBattleMoveTypeSpriteId = CreateSprite(&sSpriteTemplate_MoveTypes, 0, 0, 2);
-    }
-
     if (gMain.heldKeys & DPAD_ANY && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
         gPlayerDpadHoldFrames++;
     else
@@ -777,7 +609,6 @@ static void HandleInputChooseMove(void)
             else
                 BtlController_EmitTwoReturnValues(1, 10, gMoveSelectionCursor[gActiveBattler] | (gMultiUsePlayerCursor << 8));
             HideMegaTriggerSprite();
-            DestroyTypeIcon();
             PlayerBufferExecCompleted();
         }
         else if (canSelectTarget == 1)
@@ -804,6 +635,7 @@ static void HandleInputChooseMove(void)
         gBattleStruct->mega.playerSelect = FALSE;
         BtlController_EmitTwoReturnValues(1, 10, 0xFFFF);
         HideMegaTriggerSprite();
+        DestroyTypeIcon();
         PlayerBufferExecCompleted();
     }
     else if (JOY_NEW(DPAD_LEFT))
@@ -858,10 +690,8 @@ static void HandleInputChooseMove(void)
     }
     else if (JOY_NEW(SELECT_BUTTON))
     {
-        if (sBattleMoveTypeSpriteId != 0)
-        {
-            (&gSprites[sBattleMoveTypeSpriteId])->invisible = TRUE;
-        }
+        if (gBattleMoveTypeSpriteId != MAX_SPRITES)
+            gSprites[gBattleMoveTypeSpriteId].invisible = TRUE;
         if (gNumberOfMovesToChoose > 1 && !(gBattleTypeFlags & BATTLE_TYPE_LINK))
         {
             MoveSelectionCreateCursorAt(gMoveSelectionCursor[gActiveBattler], 29);
@@ -1648,7 +1478,6 @@ static void WaitForMonSelection(void)
 
 static void OpenBagAndChooseItem(void)
 {
-    DestroyTypeIcon();
     if (!gPaletteFade.active)
     {
         gBattlerControllerFuncs[gActiveBattler] = CompleteWhenChoseItem;
@@ -1771,17 +1600,10 @@ static void MoveSelectionDisplayMoveType(void)
 {
     struct Sprite *spr;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[gActiveBattler][4]);
-    if (sBattleMoveTypeSpriteId == 0)
-    {
-        LoadCompressedSpriteSheet(&sSpriteSheet_MoveTypes);
-        sBattleMoveTypeSpriteId = CreateSprite(&sSpriteTemplate_MoveTypes, 0, 0, 0);
-    }
-    spr = &gSprites[sBattleMoveTypeSpriteId];
-    StartSpriteAnim(spr, gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type);
-    spr->oam.paletteNum = sMoveTypeToOamPaletteNum[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type];
-    spr->pos1.x = 216;
-    spr->pos1.y = 128;
-    spr->invisible = FALSE;
+    if (gBattleMoveTypeSpriteId == MAX_SPRITES)
+        LoadTypeIcon(gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type);
+    else
+        SetTypeIconPal(gBattleMoves[moveInfo->moves[gMoveSelectionCursor[gActiveBattler]]].type, gBattleMoveTypeSpriteId);
 }
 
 static void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 arg1)
@@ -1853,15 +1675,6 @@ static void PrintLinkStandbyMsg(void)
         gBattle_BG0_X = 0;
         gBattle_BG0_Y = 0;
         BattlePutTextOnWindow(gText_LinkStandby, 0);
-    }
-}
-
-static void DestroyTypeIcon(void)
-{
-    if (sBattleMoveTypeSpriteId != 0)
-    {
-        DestroySpriteAndFreeResources(&gSprites[sBattleMoveTypeSpriteId]);
-        sBattleMoveTypeSpriteId = 0;
     }
 }
 
@@ -2951,6 +2764,7 @@ static void PlayerHandleChooseItem(void)
 {
     s32 i;
 
+    DestroyTypeIcon();
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
     gBattlerControllerFuncs[gActiveBattler] = OpenBagAndChooseItem;
     gBattlerInMenuId = gActiveBattler;
